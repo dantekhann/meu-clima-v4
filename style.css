@@ -1,0 +1,237 @@
+/* --- VARIÁVEIS DE CORES (Baseadas no seu print) --- */
+:root {
+  --fundo: #121214;
+  --card: #1e1e26;
+  --texto: #ffffff;
+  --texto-suave: #a8a8b3;
+  --destaque: #00d2ff; /* Azul Realtime */
+  --perigo: #ff5555;
+  --neon-btn: #ccff00; /* Verde limão do seu botão */
+}
+
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--fundo);
+  color: var(--texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#app {
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* --- TÍTULO --- */
+h1 {
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+h1 strong {
+  color: var(--destaque);
+}
+
+/* --- INPUT (Onde o árabe agora fica centralizado) --- */
+.input-group {
+  margin-bottom: 20px;
+}
+
+#cidadeInput {
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+
+  /* CENTRALIZAÇÃO TOTAL */
+  text-align: center !important;
+  unicode-bidi: plaintext;
+}
+
+#cidadeInput:focus {
+  border-color: var(--destaque);
+}
+
+/* --- BOTÃO (Verde Limão do Print) --- */
+#btnVerificar {
+  width: 100%;
+  padding: 15px;
+  background-color: var(--neon-btn);
+  color: #000;
+  border: none;
+  border-radius: 30px; /* Estilo pílula do seu print */
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: transform 0.2s;
+}
+
+#btnVerificar:hover {
+  transform: scale(1.02);
+}
+
+/* --- CARD DE RESULTADO (Estilo do Print) --- */
+.alerta-moderno {
+  position: relative; /* CRUCIAL: Isso mantém a nuvem presa dentro do card */
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  border-left: 4px solid #00d2ff;
+  overflow: hidden; /* Garante que nada vaze pelas bordas */
+}
+
+.weather-icon-main {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 3rem; /* Tamanho da nuvem */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
+.skeleton {
+  width: 100%;
+  height: 250px; /* Mesma altura média do seu card */
+  background: linear-gradient(90deg, #1e1e26 25%, #2a2a35 50%, #1e1e26 75%);
+  background-size: 200% 100%;
+  border-radius: 20px;
+  animation: loading 1.5s infinite;
+  margin-bottom: 40px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.alerta-moderno h2 {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin-bottom: 10px;
+  word-break: break-word; /* Suporta nomes longos */
+}
+
+.temp-grande {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: var(--destaque);
+}
+
+.weather-icon-main {
+  font-size: 3rem;
+  position: absolute;
+  right: 30px;
+  top: 40px;
+}
+
+/* Texto de descrição do clima */
+.alerta-moderno p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Mensagem de erro */
+#notificacao-container p {
+  color: var(--perigo);
+  margin: 15px 0;
+}
+
+/* --- ANIMAÇÕES --- */
+
+/* Animação de entrada do Card */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efeito de carregamento pulsante (Skeleton) */
+.skeleton {
+  width: 100%;
+  height: 250px;
+  background: #1e1e26;
+  background-image: linear-gradient(
+    90deg,
+    #1e1e26 0px,
+    #2a2a35 40px,
+    #1e1e26 80px
+  );
+  background-size: 200% 100%;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  animation: skeleton-pulse 1.5s infinite linear;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+/* --- LISTA DE SELEÇÃO (Cidades Homônimas) --- */
+
+.lista-selecao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px; /* Respiro antes do botão */
+  animation: fadeIn 0.3s ease;
+  width: 100%;
+}
+
+.item-local {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.item-local:hover {
+  background: rgba(0, 210, 255, 0.08);
+  border-color: var(--destaque);
+  transform: translateX(5px); /* Pequeno feedback de movimento */
+}
+
+.item-local strong {
+  display: block;
+  color: var(--texto);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.item-local span {
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+}
