@@ -1,4 +1,4 @@
-README - Meu Clima v4: Edição Tempo Real (v2)
+ClimaHub-v4
 Este documento detalha as atualizações e a evolução técnica do projeto Meu Clima da versão 3 para a 4, focando em experiência do usuário (UX), precisão nos dados e design minimalista.
 
 🚀 Visão Geral
@@ -38,7 +38,7 @@ eliminando distrações visuais e garantindo que os dados de temperatura sejam o
 ● script.js: Lógica de consumo da API Open-Meteo com a nova integração de estado
 temporal.
 
-🔧 Como Rodar o Projeto Clone este repositório: git clone https://github.com/SEU-USUARIO/meu-clima-v4.git
+🔧 Como Rodar o Projeto Clone este repositório: git clone https://github.com/SEU-USUARIO/ClimaHub-v4.git
 
 👤 Desenvolvido por: Paulo Dante Coelho Neto
 https://github.com/dantekhann
